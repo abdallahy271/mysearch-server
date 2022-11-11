@@ -12,6 +12,14 @@ services:
     volumes: ['./api:/api']
     env_file:
       - ./.env/api.env
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    depends_on:
+      - web
   worker:
     build:
       context: ./celery-queue
