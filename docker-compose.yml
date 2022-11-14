@@ -37,7 +37,7 @@ services:
       dockerfile: Dockerfile
     ports:
      - "5555:5555"
-    command:  ['celery',  '-A', 'tasks', 'flower']
+    command: celery -A tasks flower --auto_refresh=True --url_prefix=monitor
     depends_on:
       - redis
       - worker
